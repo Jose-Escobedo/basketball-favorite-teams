@@ -3,8 +3,8 @@ class User < ApplicationRecord
     validates :name, presence: true, uniqueness: true
     has_many :games
     has_many :teams, through: :games
-    has_many :favorite_teams
-    has_many :teams, through: :favorite_teams
+    has_many :favorites
+    has_many :teams, through: :favorites
 
     def teams
         Game.where('team1_id = ? or team2_id = ?', id, id)

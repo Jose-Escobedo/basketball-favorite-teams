@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
         end
     end 
 
-    def logout
+    def destroy
         session.delete :current_user
     end 
 end

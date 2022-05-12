@@ -17,6 +17,22 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
+  function onDeleteTeam(id) {
+    const updatedTeams = favoriteTeams.filter((team) => team.id !== id);
+    setFavoriteTeams(updatedTeams);
+  }
+
+  function handleChangeTeam(changedTeam) {
+    const changedTeams = favoriteTeams.map((team) => {
+      if (team.id === changedTeam.id) {
+        return changedTeam;
+      } else {
+        return team;
+      }
+    });
+    setFavoriteTeams(changedTeams);
+  }
+
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
       if (res.ok) {
@@ -26,44 +42,68 @@ function App() {
         });
       }
     });
+    fetch("/favorites")
+      .then((res) => res.json())
+      .then(setFavoriteTeams);
 
     fetch("/teams")
       .then((res) => res.json())
       .then(setTeams);
   }, []);
 
-  // fetch("/teams")
-  //   .then((res) => res.json())
-  //   .then(setTeams);
-
-  if (!isAuthenticated)
-    return (
-      <Login
-        error={"please login"}
-        setIsAuthenticated={setIsAuthenticated}
-        setUser={setUser}
-      />
-    );
+  // if (!isAuthenticated)
+  //   return (
+  //     <Login
+  //       error={"please login"}
+  //       setIsAuthenticated={setIsAuthenticated}
+  //       setUser={setUser}
+  //     />
+  //   );
 
   return (
     <div className="App">
+      <Header user={user} setUser={setUser} />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="teams" element={<Teams teams={teams} />} />
-        <Route
-          exact
-          path="login"
-          element={
-            <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} />
-          }
-        />
-        <Route
-          exact
-          path="signup"
-          element={
-            <Signup setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
-          }
-        />
+        {user ? (
+          <Route
+            exact
+            path="favorites"
+            element={
+              <FavoriteTeams
+                onDeleteTeam={onDeleteTeam}
+                favoriteteams={favoriteTeams}
+                changeTeam={handleChangeTeam}
+                user={user}
+              />
+            }
+          />
+        ) : (
+          <>
+            {/* add a filter to teams  */}
+            <Route exact path="teams" element={<Teams teams={teams} />} />
+            <Route exact path="/" element={<Home />} />
+            <Route
+              exact
+              path="login"
+              element={
+                <Login
+                  setIsAuthenticated={setIsAuthenticated}
+                  setUser={setUser}
+                />
+              }
+            />
+            <Route
+              exact
+              path="signup"
+              element={
+                <Signup
+                  setUser={setUser}
+                  setIsAuthenticated={setIsAuthenticated}
+                />
+              }
+            />
+          </>
+        )}
       </Routes>
     </div>
   );

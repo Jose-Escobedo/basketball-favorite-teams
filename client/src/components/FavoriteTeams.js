@@ -1,15 +1,25 @@
 import React from "react";
 import Header from "./Header";
-import TeamCard from "./TeamCard";
+import FavoriteTeamsCard from "./FavoriteTeamsCard";
 
-function FavoriteTeams({ teams, user }) {
+function FavoriteTeams({ favoriteteams, user, onDeleteTeam, changeTeam }) {
   return (
-    <>
-      <Header />
-      {teams.map((team) => {
-        return <TeamCard team={team} key={team.id} />;
+    <div className="myteam-container">
+      <h2 id="myteamheader">{`${
+        user.name.charAt(0).toUpperCase() + user.name.slice(1)
+      }'s Favorite Teams`}</h2>
+      {favoriteteams.map((team) => {
+        return (
+          <FavoriteTeamsCard
+            onDeleteTeam={onDeleteTeam}
+            team={team}
+            key={team.id}
+            changeTeam={changeTeam}
+          />
+        );
       })}
-    </>
+      {/* <NewTeamForm addNewTeam={addNewTeam} /> */}
+    </div>
   );
 }
 

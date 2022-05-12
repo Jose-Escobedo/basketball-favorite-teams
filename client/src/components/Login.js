@@ -33,7 +33,6 @@ function Login({ setUser, setIsAuthenticated }) {
   }
   return (
     <>
-      <Header />
       <div className="signup-container">
         <h2>Login to view your favorite teams!</h2>
         <form className="signup-form" onSubmit={onSubmit}>

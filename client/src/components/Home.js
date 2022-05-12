@@ -2,10 +2,11 @@ import React from "react";
 import Header from "./Header";
 
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-function Home() {
-  return (
-    <>
-      <Header />
+function Home({ user }) {
+  if (user) {
+    return <h1>Welcome, {user.name}!</h1>;
+  } else {
+    return (
       <div className="section hero">
         <div className="container">
           <div className="row">
@@ -26,8 +27,8 @@ function Home() {
           </div>
         </div>
       </div>
-    </>
-  );
+    );
+  }
 }
 
 export default Home;
