@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import TeamLogo from "./images/phoenix-suns-logo.svg";
+
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 function Home() {
   return (
@@ -21,7 +21,7 @@ function Home() {
               </button>
             </div>
             <div className="one-half column">
-              <img id="logo-main" src={TeamLogo} />
+              <img id="logo-main" src={"https://svgshare.com/i/h2E.svg"} />
             </div>
           </div>
         </div>

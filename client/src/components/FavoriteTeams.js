@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 import TeamCard from "./TeamCard";
 
-function Teams({ teams }) {
+function FavoriteTeams({ teams, user }) {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ function Teams({ teams }) {
   );
 }
 
-export default Teams;
+export default FavoriteTeams;

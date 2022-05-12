@@ -1,36 +1,77 @@
 import React from "react";
+import Header from "./Header";
+import { useState } from "react";
+import Signup from "./Signup";
 
-function Login() {
+function Login({ setUser, setIsAuthenticated }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState([]);
+
+  function onSubmit(e) {
+    e.preventDefault();
+    const user = {
+      username: username,
+      password,
+    };
+
+    fetch(`/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setUser(user);
+          setIsAuthenticated(true);
+        });
+      } else {
+        res.json().then((json) => setError(json.error));
+      }
+    });
+  }
   return (
-    <form className="login">
-      <div className="row">
-        <div className="six columns">
-          <label for="exampleEmailInput">Your email</label>
+    <>
+      <Header />
+      <div className="signup-container">
+        <h2>Login to view your favorite teams!</h2>
+        <form className="signup-form" onSubmit={onSubmit}>
+          <div className="row-signup">
+            <div className="six columns">
+              <label htmlFor="username-input">Enter Your Username</label>
+              <input
+                className="u-full-width"
+                type="text"
+                placeholder="Enter username here..."
+                id="username-login"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div className="six columns">
+              <label htmlFor="password-input">Enter Your Password</label>
+              <input
+                className="u-full-width"
+                type="text"
+                placeholder="Enter password here..."
+                id="password-login"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
           <input
-            className="u-full-width"
-            type="email"
-            placeholder="test@mailbox.com"
-            id="exampleEmailInput"
+            id="button-login"
+            className="button-primary"
+            type="submit"
+            value="Login"
           />
-        </div>
-        <div className="six columns">
-          <label for="exampleRecipientInput">Reason for contacting</label>
-          <select className="u-full-width" id="exampleRecipientInput">
-            <option value="Option 1">Questions</option>
-            <option value="Option 2">Admiration</option>
-            <option value="Option 3">Can I get your number?</option>
-          </select>
-        </div>
+        </form>
       </div>
-      <label for="exampleMessage">Message</label>
-      <textarea
-        className="u-full-width"
-        placeholder="Hi Dave …"
-        id="exampleMessage"
-      ></textarea>
-
-      <input className="button-primary" type="submit" value="Submit" />
-    </form>
+      {error ? <div>{error}</div> : null}
+      <Signup setUser={setUser} setIsAuthenticated={setUser} />
+    </>
   );
 }
 
