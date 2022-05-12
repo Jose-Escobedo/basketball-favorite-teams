@@ -31,7 +31,20 @@ function App() {
       }
     });
     setFavoriteTeams(changedTeams);
+    console.log(favoriteTeams);
   }
+
+  const addNewTeam = (e) => {
+    fetch("/favorites", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(e),
+    })
+      .then((res) => res.json())
+      .then(setFavoriteTeams([...favoriteTeams, e]));
+  };
 
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
@@ -73,6 +86,7 @@ function App() {
                 onDeleteTeam={onDeleteTeam}
                 favoriteteams={favoriteTeams}
                 changeTeam={handleChangeTeam}
+                addNewTeam={addNewTeam}
                 user={user}
               />
             }

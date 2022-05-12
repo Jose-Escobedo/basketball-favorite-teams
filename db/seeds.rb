@@ -63,8 +63,8 @@ jazz = Team.create(
     img_url: "https://svgshare.com/i/h2U.svg"
 )
 
-favorite1 = Favorite.create(user_id: "1", team_id: "2")
-favorite2 = Favorite.create(user_id: "1", team_id: "3")
+favorite1 = Favorite.create(user_id: 1, team_id: 2)
+favorite2 = Favorite.create(user_id: 1, team_id: 3)
 
 
 zack_user = User.create(name: "zack", password:"flatiron")

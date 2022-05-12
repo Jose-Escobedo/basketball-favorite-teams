@@ -1,8 +1,15 @@
 import React from "react";
 import Header from "./Header";
 import FavoriteTeamsCard from "./FavoriteTeamsCard";
+import NewTeamForm from "./NewTeamForm";
 
-function FavoriteTeams({ favoriteteams, user, onDeleteTeam, changeTeam }) {
+function FavoriteTeams({
+  favoriteteams,
+  user,
+  onDeleteTeam,
+  changeTeam,
+  addNewTeam,
+}) {
   return (
     <div className="myteam-container">
       <h2 id="myteamheader">{`${
@@ -18,7 +25,7 @@ function FavoriteTeams({ favoriteteams, user, onDeleteTeam, changeTeam }) {
           />
         );
       })}
-      {/* <NewTeamForm addNewTeam={addNewTeam} /> */}
+      <NewTeamForm addNewTeam={addNewTeam} id={user.id} user={user} />
     </div>
   );
 }
