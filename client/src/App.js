@@ -7,12 +7,13 @@ import Header from "./components/Header";
 import FavoriteTeams from "./components/FavoriteTeams";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import TeamStats from "./components/TeamStats";
 
 function App() {
   const [teams, setTeams] = useState([]);
   const [favoriteTeams, setFavoriteTeams] = useState([]);
-  // const [errors, setErrors] = useState(false);
-  // const [cart, setCart] = useState([]);
+
+  const [teamStats, setTeamStats] = useState([]);
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
@@ -62,6 +63,23 @@ function App() {
     fetch("/teams")
       .then((res) => res.json())
       .then(setTeams);
+
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Host": "api-basketball.p.rapidapi.com",
+        "X-RapidAPI-Key": "7ad17cb467msh3cf82fdaf1f4e42p1cf123jsnbf6da2c41fb7",
+      },
+    };
+
+    fetch(
+      "https://api-basketball.p.rapidapi.com/statistics?season=2019-2020&league=12&team=155",
+      options
+    )
+      .then((response) => response.json())
+      .then(setTeamStats)
+      .catch((err) => console.error(err));
+    console.log(teamStats);
   }, []);
 
   // if (!isAuthenticated)
@@ -102,6 +120,11 @@ function App() {
           <>
             {/* add a filter to teams  */}
             <Route exact path="teams" element={<Teams teams={teams} />} />
+            <Route
+              exact
+              path="teamstats"
+              element={<TeamStats teamStats={teamStats} />}
+            />
             <Route exact path="/" element={<Home />} />
             <Route
               exact

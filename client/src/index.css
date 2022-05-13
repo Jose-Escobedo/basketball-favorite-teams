@@ -104,10 +104,10 @@ body {
   margin-bottom: 2rem;
 }
 
-#team-container :hover {
+/* #team-container :hover {
   box-shadow: inset 500px 0 0 0 #141414;
   color: white;
-}
+} */
 
 #change-team-card {
   display: flex;
@@ -231,4 +231,12 @@ body {
 #team-add-form label {
   color: white;
   padding-bottom: 8%;
+}
+
+#change-team-for label {
+  color: white;
+}
+
+#change-team-for button {
+  color: white;
 }

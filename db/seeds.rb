@@ -5,23 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-game1 = Game.create(
-    user_id: '1', 
-    team1_id: '1',
-    team2_id: '2'
-)
 
-game2 = Game.create(
-    user_id: '2', 
-    team1_id: '3',
-    team2_id: '4'
-)
-
-game3 = Game.create(
-    user_id: '1', 
-    team1_id: '3',
-    team2_id: '1'
-)
 
 suns = Team.create(
     name: "Phoenix Suns", 

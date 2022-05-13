@@ -54,7 +54,7 @@ function ChangeTeamForm({ changeTeam, id }) {
         /> */}
       </form>
       <button onClick={handleSubmit} className="form-button" type="submit">
-        Edit Team Number
+        Change Team
       </button>
     </div>
   );
