@@ -6,6 +6,7 @@ class Team < ApplicationRecord
     has_many :favorites
     has_many :users, through: :favorites
 
+    has_one :stat
 
     # def games
     #   Game.where('team1_id = ? or team2_id = ?', id, id)

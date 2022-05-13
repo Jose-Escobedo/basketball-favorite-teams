@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    # Group Activity => Set 'authorize_user' to Skip Create Action
+    before_action :authorize_user, except: [:create]
 
     # GET "/users"
     def index 
@@ -15,19 +15,15 @@ class UsersController < ApplicationController
     # POST "/users"
     def create
         user = User.create!(user_params)
-        session[:current_user] = user.id
-
         render json: user, status: :created
-    rescue ActiveRecord::RecordInvalid => invalid
-        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end 
 
-    # # PUT "/users/:id"
-    # def update
-    #     user = User.find(params[:id])
-    #     user.update!(user_params)
-    #     render json: user, status: :created
-    # end
+    # PUT "/users/:id"
+    def update
+        user = User.find(params[:id])
+        user.update!(user_params)
+        render json: user, status: :created
+    end
 
     # DELETE "/users/:id"
     def destroy

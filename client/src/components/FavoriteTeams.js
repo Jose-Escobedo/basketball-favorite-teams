@@ -25,7 +25,12 @@ function FavoriteTeams({
           />
         );
       })}
-      <NewTeamForm addNewTeam={addNewTeam} id={user.id} user={user} />
+      <NewTeamForm
+        addNewTeam={addNewTeam}
+        key={user.id}
+        userid={user.id}
+        team={favoriteteams}
+      />
     </div>
   );
 }

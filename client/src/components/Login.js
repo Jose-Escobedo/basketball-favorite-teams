@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import { useState } from "react";
 import Signup from "./Signup";
+import { Navigate, Route } from "react-router";
 
 function Login({ setUser, setIsAuthenticated }) {
   const [username, setUsername] = useState("");
@@ -25,6 +26,7 @@ function Login({ setUser, setIsAuthenticated }) {
         res.json().then((user) => {
           setUser(user);
           setIsAuthenticated(true);
+          return <Navigate to="/favorites" />;
         });
       } else {
         res.json().then((json) => setError(json.error));

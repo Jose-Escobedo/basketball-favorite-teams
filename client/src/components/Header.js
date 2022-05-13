@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-function Header({ user, setUser }) {
-  function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-      }
+function Header({ user, setUser, setIsAuthenticated }) {
+  const logout = () => {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => {
+      setIsAuthenticated(false);
+      setUser(null);
     });
-  }
+  };
 
   return (
     <div className="header-container">
@@ -36,7 +37,7 @@ function Header({ user, setUser }) {
               </li>
             )}
             {user ? (
-              <button onClick={handleLogoutClick}>Logout</button>
+              <button onClick={logout}>Logout</button>
             ) : (
               <li className="li-child">
                 <Link className="text-link" to="/login">

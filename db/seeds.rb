@@ -50,6 +50,16 @@ jazz = Team.create(
 favorite1 = Favorite.create(user_id: 1, team_id: 2)
 favorite2 = Favorite.create(user_id: 1, team_id: 3)
 
+stat1 = Stat.create(team_id: 1, wins: 65, losses:20, odds:70)
+stat2 = Stat.create(team_id: 2, wins: 40, losses:10, odds:50)
+stat3 = Stat.create(team_id: 3, wins: 65, losses:20, odds:40)
+stat4 = Stat.create(team_id: 4, wins: 65, losses:20, odds:30)
+stat5 = Stat.create(team_id: 5, wins: 65, losses:20, odds:50)
+stat6 = Stat.create(team_id: 6, wins: 65, losses:20, odds:50)
+stat7 = Stat.create(team_id: 7, wins: 65, losses:20, odds:50)
+stat8 = Stat.create(team_id: 8, wins: 65, losses:20, odds:50)
+
+
 
 zack_user = User.create(name: "zack", password:"flatiron")
 bob_user = User.create(name: "bob", password:"flat")

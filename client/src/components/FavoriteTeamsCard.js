@@ -23,7 +23,7 @@ function FavoriteTeamCard({ team, onDeleteTeam, changeTeam }) {
         </button>
       </div>
       <ChangeTeamForm
-        id={team.id}
+        team={team}
         name={team.team.name}
         img={team.team.img_url}
         changeTeam={handleChangeTeam}

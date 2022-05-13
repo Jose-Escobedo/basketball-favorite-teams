@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-function ChangeTeamForm({ changeTeam, id }) {
+function ChangeTeamForm({ changeTeam, team }) {
   //   const [teamImg, setTeamImg] = useState("");
   const [teamNumber, setTeamNumber] = useState("");
 
@@ -16,12 +16,14 @@ function ChangeTeamForm({ changeTeam, id }) {
     // setTeamImg(e.target.value);
     setTeamNumber(e.target.value);
 
-    fetch(`/favorites/${id}`, {
+    fetch(`/favorites/${team.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        user_id: team.user_id,
+        team: team.team,
         team_id: teamNumber,
       }),
     })
@@ -52,10 +54,8 @@ function ChangeTeamForm({ changeTeam, id }) {
           value={teamImg}
           onChange={handleTeamImg}
         /> */}
+        <input className="form-button" value="Change Team" type="submit" />
       </form>
-      <button onClick={handleSubmit} className="form-button" type="submit">
-        Change Team
-      </button>
     </div>
   );
 }

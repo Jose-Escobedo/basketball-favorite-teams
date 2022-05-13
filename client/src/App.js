@@ -93,7 +93,11 @@ function App() {
 
   return (
     <div className="App">
-      <Header user={user} setUser={setUser} />
+      <Header
+        user={user}
+        setUser={setUser}
+        setIsAuthenticated={setIsAuthenticated}
+      />
       <Routes>
         {user ? (
           <>

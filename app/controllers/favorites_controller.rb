@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
     def index
         favorites = Favorite.all
-        render json: favorites, status: :ok
+        render json: favorites, include: ['team'],status: :ok
     end
 
     def destroy
@@ -24,7 +24,7 @@ class FavoritesController < ApplicationController
     private
 
     def favorite_params
-        params.permit(:user_id,:team_id)
+        params.require(:favorite).permit(:team_id,:user_id  )
     end
 
 end

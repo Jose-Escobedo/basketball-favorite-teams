@@ -1,35 +1,35 @@
 import React from "react";
 import { useState } from "react";
-function NewTeamForm({ addNewTeam, id, user }) {
-  //   const [teamImg, setTeamImg] = useState("");
-  const blankTeam = {
-    user_id: user.id,
-    team_id: null,
-  };
-  const [newNumber, setFormData] = useState(blankTeam);
-  const { user_id, team_id } = newNumber;
+function NewTeamForm({ addNewTeam, userid, team }) {
+  const [formData, setFormData] = useState({
+    team: team.team,
+    user_id: userid,
+    team_id: "",
+  });
 
-  const handleTeamNumber = (e) => {
-    setFormData({
-      ...newNumber,
-      team_id: e.target.value,
-    });
-    console.log(newNumber);
-  };
-
-  function handleForm(e) {
+  function onSubmit(e) {
     e.preventDefault();
-    addNewTeam(newNumber);
-    setFormData(blankTeam);
+    const newTeam = {
+      team: formData.team,
+      user_id: formData.user_id,
+      team_id: formData.team_id,
+    };
+    console.log(newTeam);
+    addNewTeam(newTeam);
   }
   return (
     <div id="add-team-form-container" className="form-container">
       <h2 id="add-team-header">Want to add a team slot?</h2>
-      <form id="team-add-form" onSubmit={handleForm} className="team-add-form">
+      <form id="team-add-form" onSubmit={onSubmit} className="team-add-form">
         <label id="chooseateam" htmlFor="teamlistnum">
           Choose a Team
         </label>
-        <select id="teamlistnum" onChange={(val) => handleTeamNumber(val)}>
+        <select
+          id="teamlistnum"
+          onChange={(e) =>
+            setFormData({ ...formData, team_id: e.target.value })
+          }
+        >
           <option value="1">Suns</option>
           <option value="2">Mavericks</option>
           <option value="3">Grizzlies</option>
@@ -54,15 +54,8 @@ function NewTeamForm({ addNewTeam, id, user }) {
           value={teamImg}
           onChange={handleTeamImg}
         /> */}
+        <input type="submit" value="Add Team Slot" />
       </form>
-      <button
-        id="team-slot"
-        onClick={handleForm}
-        className="form-button"
-        type="submit"
-      >
-        Add Team Slot
-      </button>
     </div>
   );
 }
