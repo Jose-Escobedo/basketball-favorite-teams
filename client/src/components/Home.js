@@ -2,9 +2,10 @@ import React from "react";
 import Header from "./Header";
 
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-function Home({ user }) {
+import Teams from "./Teams";
+function Home({ user, teams }) {
   if (user) {
-    return <h1>Welcome, {user.name}!</h1>;
+    return <Teams teams={teams} />;
   } else {
     return (
       <div className="section hero">

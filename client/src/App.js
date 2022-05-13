@@ -78,19 +78,26 @@ function App() {
       <Header user={user} setUser={setUser} />
       <Routes>
         {user ? (
-          <Route
-            exact
-            path="favorites"
-            element={
-              <FavoriteTeams
-                onDeleteTeam={onDeleteTeam}
-                favoriteteams={favoriteTeams}
-                changeTeam={handleChangeTeam}
-                addNewTeam={addNewTeam}
-                user={user}
-              />
-            }
-          />
+          <>
+            <Route
+              exact
+              path="favorites"
+              element={
+                <FavoriteTeams
+                  onDeleteTeam={onDeleteTeam}
+                  favoriteteams={favoriteTeams}
+                  changeTeam={handleChangeTeam}
+                  addNewTeam={addNewTeam}
+                  user={user}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/"
+              element={<Home user={user} teams={teams} />}
+            />
+          </>
         ) : (
           <>
             {/* add a filter to teams  */}

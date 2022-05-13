@@ -64,7 +64,20 @@ body {
   color: white;
 }
 
-.team-container {
+.teams-list-container {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#nba-list-header {
+  color: white;
+  padding-top: 3%;
+  border-bottom: 1px solid white;
+}
+
+#team-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -74,9 +87,10 @@ body {
   margin: 0 auto;
   width: 100%;
   background-color: black;
+  padding-top: 3%;
 }
 
-.team-card {
+#team-card {
   display: flex;
   flex-direction: column;
   width: 500px;
@@ -85,9 +99,40 @@ body {
   align-items: center;
   font-family: "Raleway", sans-serif;
   font-size: 1rem;
-  border: 1px solid white;
+  border: 2px solid white;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+#team-container :hover {
+  box-shadow: inset 500px 0 0 0 #141414;
+  color: white;
+}
+
+#change-team-card {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  border: 2px solid white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+#change-team-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: black;
 }
 
 .team-card img {
@@ -113,7 +158,7 @@ body {
   background-color: black;
   height: 90vh;
   color: white;
-  padding-top: 4rem;
+  padding-top: 10rem;
 }
 
 .signup-form {
@@ -141,4 +186,49 @@ body {
   color: white;
   padding-top: 3rem;
   border-bottom: 1px solid white;
+}
+
+#add-team-form-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+#add-team-form-container button {
+  width: 50%;
+}
+#add-team-form-container h2 {
+  color: white;
+}
+
+#myteamheader {
+  margin-bottom: 5%;
+}
+
+#team-card-number {
+  color: white;
+}
+
+#team-slot {
+  color: white;
+}
+
+.change-form :hover {
+  opacity: none;
+  box-shadow: none;
+}
+
+#change-team-form-container :hover {
+  opacity: none;
+  box-shadow: none;
+}
+
+#team-add-form label {
+  color: white;
+  padding-bottom: 8%;
 }

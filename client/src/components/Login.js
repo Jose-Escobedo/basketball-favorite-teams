@@ -32,46 +32,45 @@ function Login({ setUser, setIsAuthenticated }) {
     });
   }
   return (
-    <>
-      <div className="signup-container">
-        <h2>Login to view your favorite teams!</h2>
-        <form className="signup-form" onSubmit={onSubmit}>
-          <div className="row-signup">
-            <div className="six columns">
-              <label htmlFor="username-input">Enter Your Username</label>
-              <input
-                className="u-full-width"
-                type="text"
-                placeholder="Enter username here..."
-                id="username-login"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-            <div className="six columns">
-              <label htmlFor="password-input">Enter Your Password</label>
-              <input
-                className="u-full-width"
-                type="text"
-                placeholder="Enter password here..."
-                id="password-login"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+    <div className="signup-container">
+      <h2>Login to view your favorite teams!</h2>
+      <form className="signup-form" onSubmit={onSubmit}>
+        <div className="row-signup">
+          <div className="six columns">
+            <label htmlFor="username-input">Enter Your Username</label>
+            <input
+              className="u-full-width"
+              type="text"
+              placeholder="Enter username here..."
+              id="username-login"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
-          <input
-            id="button-login"
-            className="button-primary"
-            type="submit"
-            value="Login"
-          />
-        </form>
-      </div>
-      {error ? <div>{error}</div> : null}
-      <Signup setUser={setUser} setIsAuthenticated={setUser} />
-    </>
+          <div className="six columns">
+            <label htmlFor="password-input">Enter Your Password</label>
+            <input
+              className="u-full-width"
+              type="text"
+              placeholder="Enter password here..."
+              id="password-login"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+        </div>
+        <input
+          id="button-login"
+          className="button-primary"
+          type="submit"
+          value="Login"
+        />
+      </form>
+    </div>
   );
 }
 
 export default Login;
+{
+  /* {error ? <Signup setUser={setUser} setIsAuthenticated={setUser} /> : null} */
+}

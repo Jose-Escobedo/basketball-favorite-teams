@@ -14,8 +14,8 @@ function FavoriteTeamCard({ team, onDeleteTeam, changeTeam }) {
   }
 
   return (
-    <div className="team-container">
-      <div className="team-card">
+    <div id="change-team-container" className="team-container">
+      <div id="change-team-card" className="team-card">
         <img src={team.team.img_url} alt={team.team.name}></img>
         <h1>{team.team.name}</h1>
         <button className="removeteambtn" onClick={handleRemoveTeam}>

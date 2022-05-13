@@ -6,6 +6,7 @@ function ChangeTeamForm({ changeTeam, id }) {
 
   const handleTeamNumber = (e) => {
     setTeamNumber(e.target.value);
+    console.log(teamNumber);
   };
   //   const handleTeamImg = (e) => {
   //     setTeamImg(e.target.value);
@@ -28,15 +29,21 @@ function ChangeTeamForm({ changeTeam, id }) {
       .then((newTeam) => changeTeam(newTeam));
   }
   return (
-    <div id="team-form-container" className="form-container">
-      <form id="team-form" onSubmit={handleSubmit} className="review-form">
-        <input
-          type="number"
-          name="name"
-          value={teamNumber}
-          placeholder="Insert team number here..."
-          onChange={handleTeamNumber}
-        />
+    <div id="change-team-for" className="form-container">
+      <form onSubmit={handleSubmit} className="change-form">
+        <label id="changeteamlabel" htmlFor="teamlistnum">
+          Choose a Team
+        </label>
+        <select id="changeteamlist" onChange={(val) => handleTeamNumber(val)}>
+          <option value="1">Suns</option>
+          <option value="2">Mavericks</option>
+          <option value="3">Grizzlies</option>
+          <option value="4">Pelicans</option>
+          <option value="5">Nets</option>
+          <option value="6">Hawks</option>
+          <option value="7">Bucks</option>
+          <option value="8">Jazz</option>
+        </select>
         {/* <input
           type="text"
           name="img_url"
